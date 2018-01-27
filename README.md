@@ -1,5 +1,5 @@
-# JMeter JTL Parser
-> Parse JTL files and output them as XML, CSV
+# JTL Parse
+> Stream decode JMeter JTL files and output them as XML, CSV
 
 Parse JMeter JTL files, supporting:
 
@@ -16,8 +16,8 @@ for very large files
 ## Usage
 
 ```bash
-❯ ./jtl-parser -h
-Usage: jtl-parser [--output OUTPUT] FILENAME
+❯ ./jtlparse -h
+Usage: jtlparse [--output OUTPUT] FILENAME
 
 Positional arguments:
   FILENAME
