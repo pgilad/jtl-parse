@@ -3,3 +3,4 @@ data/
 *.iml
 parser
 jtl-parser
+dist/
