@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/pgilad/jtl-parser/jtl"
+	"github.com/pgilad/jtl-parse/jtl"
 )
 
 const (

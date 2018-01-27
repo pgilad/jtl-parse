@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/pgilad/jtl-parser/jtl"
+	"github.com/pgilad/jtl-parse/jtl"
 )
 
 func OutputCSV(output <-chan interface{}) {

@@ -6,8 +6,8 @@ import (
 	"fmt"
 
 	"github.com/alexflint/go-arg"
-	"github.com/pgilad/jtl-parser/jtl"
-	"github.com/pgilad/jtl-parser/stream"
+	"github.com/pgilad/jtl-parse/jtl"
+	"github.com/pgilad/jtl-parse/stream"
 )
 
 func main() {
