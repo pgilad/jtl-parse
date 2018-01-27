@@ -34,7 +34,7 @@ Output/Input XML is not in canonical format, in order to diff them,
 use the included `compare.sh` script:
 
 ```bash
-
+$ ./compare.sh data.jtl
 ```
 
 Currently CSV output is not configurable, and outputs only:
