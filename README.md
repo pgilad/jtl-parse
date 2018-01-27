@@ -10,7 +10,7 @@ Parse JMeter JTL files, supporting:
 - Cookies
 - More...
 
-The parser is a stream decoder, meaning it's safe to use
+The parser is a **stream decoder**, meaning it's safe to use
 for very large files
 
 ## Usage
@@ -36,6 +36,8 @@ use the included `compare.sh` script:
 ```bash
 $ ./compare.sh data.jtl
 ```
+
+## Output
 
 Currently CSV output is not configurable, and outputs only:
 - label
