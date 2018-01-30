@@ -4,3 +4,4 @@ data/
 parser
 jtl-parser
 dist/
+jtl-parse
