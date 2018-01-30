@@ -3,7 +3,6 @@ package jtl
 import (
 	"encoding/xml"
 	"fmt"
-	"log"
 	"os"
 )
 
@@ -24,6 +23,7 @@ func Decode(filename string, output chan<- interface{}) {
 		if token == nil {
 			break
 		}
+
 		// Inspect the type of the token just read.
 		switch elementType := token.(type) {
 		case xml.StartElement:
@@ -37,7 +37,7 @@ func Decode(filename string, output chan<- interface{}) {
 				var sample Sample
 				err := decoder.DecodeElement(&sample, &elementType)
 				if err != nil {
-					log.Println("Could not decode element", err)
+					fmt.Println("Could not decode element", err)
 					// log this, but just skip
 					break
 				}
@@ -48,7 +48,7 @@ func Decode(filename string, output chan<- interface{}) {
 				var sample HttpSample
 				err := decoder.DecodeElement(&sample, &elementType)
 				if err != nil {
-					log.Println("Could not decode element", err)
+					fmt.Println("Could not decode element", err)
 					// log this, but just skip
 					break
 				}

@@ -9,8 +9,8 @@ fi
 
 xml_file="$1"
 
-parsed=$(./jtlparse -o xml "$xml_file" | xmllint --c14n --pretty 1 -)
+parsed=$(./jtl-parse -o xml "$xml_file" | xmllint --c14n --pretty 1 -)
 original=$(xmllint --c14n --pretty 1 "$xml_file")
 
 # diff and ignore white space
-diff -w <(echo ${original}) <(echo ${parsed})
+cmp -b <(echo ${original}) <(echo ${parsed})
