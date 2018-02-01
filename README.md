@@ -16,15 +16,15 @@ for very large files
 ## Usage
 
 ```bash
-❯ ./jtlparse -h
-Usage: jtlparse [--output OUTPUT] FILENAME
+❯ ./jtl-parse -h
+Usage: jtl-parse [--output OUTPUT] FILENAME
 
 Positional arguments:
   FILENAME
 
 Options:
   --output OUTPUT, -o OUTPUT
-                         specify the output type, valid options: csv,xml [default: csv]
+                         specify the output type, valid options: csv,xml,json [default: json]
   --help, -h             display this help and exit
 ```
 
@@ -37,7 +37,13 @@ use the included `compare.sh` script:
 $ ./compare.sh data.jtl
 ```
 
-## Output
+## Output Formats
+
+- XML
+
+- JSON
+
+- CSV
 
 Currently CSV output is not configurable, and outputs only:
 - label

@@ -1,5 +1,5 @@
 builds:
-  - binary: jtlparse
+  - binary: jtl-parse
     goos:
       - windows
       - darwin

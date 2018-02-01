@@ -1,4 +1,4 @@
-package stream
+package output
 
 import (
 	"encoding/xml"
@@ -15,7 +15,7 @@ const (
 	Header = `<?xml version="1.0" encoding="UTF-8"?>` + "\n"
 )
 
-func OutputXML(output <-chan interface{}) {
+func XML(output <-chan interface{}) {
 	os.Stdout.Write([]byte(Header))
 	for {
 		element, more := <-output

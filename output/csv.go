@@ -1,4 +1,4 @@
-package stream
+package output
 
 import (
 	"encoding/csv"
@@ -8,7 +8,7 @@ import (
 	"github.com/pgilad/jtl-parse/jtl"
 )
 
-func OutputCSV(output <-chan interface{}) {
+func CSV(output <-chan interface{}) {
 	writer := csv.NewWriter(os.Stdout)
 	defer writer.Flush()
 
