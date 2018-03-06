@@ -13,7 +13,7 @@ func CSV(output <-chan interface{}) {
 	defer writer.Flush()
 
 	// write csv header
-	writer.Write([]string{"Label", "Timestamp", "Latency"})
+	writer.Write([]string{"Label", "Timestamp", "Latency", "Users"})
 
 	for {
 		element, more := <-output
@@ -34,7 +34,7 @@ func CSV(output <-chan interface{}) {
 }
 
 func writeHttpSample(sample jtl.HttpSample, writer *csv.Writer) {
-	data := []string{*sample.Label, strconv.Itoa(*sample.Timestamp), strconv.Itoa(*sample.Latency)}
+	data := []string{*sample.Label, strconv.FormatUint(*sample.Timestamp, 10), strconv.Itoa(*sample.Latency), strconv.Itoa(*sample.NA)}
 	writer.Write(data)
 	for _, row := range sample.Samples {
 		writeSample(row, writer)
@@ -45,7 +45,7 @@ func writeHttpSample(sample jtl.HttpSample, writer *csv.Writer) {
 }
 
 func writeSample(sample jtl.Sample, writer *csv.Writer) {
-	data := []string{*sample.Label, strconv.Itoa(*sample.Timestamp), strconv.Itoa(*sample.Latency)}
+	data := []string{*sample.Label, strconv.FormatUint(*sample.Timestamp, 10), strconv.Itoa(*sample.Latency), strconv.Itoa(*sample.NA)}
 	writer.Write(data)
 	for _, row := range sample.Samples {
 		writeSample(row, writer)

@@ -44,7 +44,7 @@ type SampleData struct {
 	SentBytes       *int    `xml:"sby,attr,omitempty" json:"sby,omitempty"`
 	Success         *bool   `xml:"s,attr,omitempty" json:"s,omitempty"`
 	ThreadName      *string `xml:"tn,attr,omitempty" json:"tn,omitempty"`
-	Timestamp       *int    `xml:"ts,attr,omitempty" json:"ts,omitempty"`
+	Timestamp       *uint64 `xml:"ts,attr,omitempty" json:"ts,omitempty"`
 
 	// nested elements
 	AssertionResults []AssertionResult `xml:"assertionResult" json:"assertionResults,omitempty"`
