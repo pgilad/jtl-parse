@@ -10,8 +10,7 @@ Parse JMeter JTL files, supporting:
 - Cookies
 - More...
 
-The parser is a **stream decoder**, meaning it's safe to use
-for very large files
+The parser is a **stream decoder**, meaning it's safe to use for very large files
 
 ## Usage
 
@@ -45,10 +44,12 @@ $ ./compare.sh data.jtl
 
 - CSV
 
-Currently CSV output is not configurable, and outputs only:
-- label
-- timestamp
-- latency
+Sample CSV output:
+```csv
+Label,Timestamp,Response Time,Latency,Users
+Label1,1519028940050,1205,1205,1
+Label2,1519028941268,93,93,1
+```
 
 ## License
 

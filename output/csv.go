@@ -13,7 +13,7 @@ func CSV(output <-chan interface{}) {
 	defer writer.Flush()
 
 	// write csv header
-	writer.Write([]string{"Label", "Timestamp", "Latency", "Users"})
+	writer.Write([]string{"Label", "Timestamp", "Response Time", "Latency", "Users"})
 
 	for {
 		element, more := <-output
@@ -33,8 +33,32 @@ func CSV(output <-chan interface{}) {
 	}
 }
 
-func writeHttpSample(sample jtl.HttpSample, writer *csv.Writer) {
-	data := []string{*sample.Label, strconv.FormatUint(*sample.Timestamp, 10), strconv.Itoa(*sample.Latency), strconv.Itoa(*sample.NA)}
+func createCSVRow(sample interface{}) []string {
+	// TODO: remove duplication
+	switch s := sample.(type) {
+	case jtl.Sample:
+		return []string{
+			*s.Label,
+			strconv.FormatUint(*s.Timestamp, 10),
+			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.NA),
+		}
+	case jtl.HttpSample:
+		return []string{
+			*s.Label,
+			strconv.FormatUint(*s.Timestamp, 10),
+			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.NA),
+		}
+	default:
+		return []string{}
+	}
+}
+
+func writeSample(sample jtl.Sample, writer *csv.Writer) {
+	data := createCSVRow(sample)
 	writer.Write(data)
 	for _, row := range sample.Samples {
 		writeSample(row, writer)
@@ -44,8 +68,8 @@ func writeHttpSample(sample jtl.HttpSample, writer *csv.Writer) {
 	}
 }
 
-func writeSample(sample jtl.Sample, writer *csv.Writer) {
-	data := []string{*sample.Label, strconv.FormatUint(*sample.Timestamp, 10), strconv.Itoa(*sample.Latency), strconv.Itoa(*sample.NA)}
+func writeHttpSample(sample jtl.HttpSample, writer *csv.Writer) {
+	data := createCSVRow(sample)
 	writer.Write(data)
 	for _, row := range sample.Samples {
 		writeSample(row, writer)

@@ -79,25 +79,25 @@ type HttpSample struct {
 	NestedSamples
 }
 
-func (s Sample) MarshalJSON() ([]byte, error) {
+func (sample Sample) MarshalJSON() ([]byte, error) {
 	type Alias Sample
 	return json.Marshal(&struct {
 		Type string `json:"type"`
 		Alias
 	}{
 		Type:  "sample",
-		Alias: (Alias)(s),
+		Alias: (Alias)(sample),
 	})
 }
 
-func (s HttpSample) MarshalJSON() ([]byte, error) {
+func (sample HttpSample) MarshalJSON() ([]byte, error) {
 	type Alias HttpSample
 	return json.Marshal(&struct {
 		Type string `json:"type"`
 		Alias
 	}{
 		Type:  "httpSample",
-		Alias: (Alias)(s),
+		Alias: (Alias)(sample),
 	})
 }
 
