@@ -41,7 +41,7 @@ func createCSVRow(sample interface{}) []string {
 			*s.Label,
 			strconv.FormatUint(*s.Timestamp, 10),
 			strconv.Itoa(*s.ElapsedTime),
-			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.Latency),
 			strconv.Itoa(*s.NA),
 		}
 	case jtl.HttpSample:
@@ -49,7 +49,7 @@ func createCSVRow(sample interface{}) []string {
 			*s.Label,
 			strconv.FormatUint(*s.Timestamp, 10),
 			strconv.Itoa(*s.ElapsedTime),
-			strconv.Itoa(*s.ElapsedTime),
+			strconv.Itoa(*s.Latency),
 			strconv.Itoa(*s.NA),
 		}
 	default:
