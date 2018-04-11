@@ -8,6 +8,14 @@ import (
 
 const DefaultOutputFormat = "json"
 
+type OutputType string
+
+const (
+	CSV  OutputType = "csv"
+	XML  OutputType = "xml"
+	JSON OutputType = "json"
+)
+
 func main() {
 	var args struct {
 		Filename string `arg:"positional,required"`
@@ -16,20 +24,21 @@ func main() {
 	args.Output = DefaultOutputFormat
 	arg.MustParse(&args)
 
-	outputStream := getOutputStream(args.Output)
+	outputType := OutputType(args.Output)
+	outputStream := getOutputStream(outputType)
 
 	data := make(chan interface{})
 	go jtl.Decode(args.Filename, data)
 	outputStream(data)
 }
 
-func getOutputStream(outputType string) func(data <-chan interface{}) {
+func getOutputStream(outputType OutputType) func(data <-chan interface{}) {
 	switch outputType {
-	case "csv":
+	case CSV:
 		return output.CSV
-	case "xml":
+	case XML:
 		return output.XML
-	case "json":
+	case JSON:
 		return output.JSON
 	default:
 		panic("Unknown output type " + outputType)
