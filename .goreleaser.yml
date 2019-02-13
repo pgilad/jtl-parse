@@ -1,24 +1,14 @@
 builds:
-    - binary: jtl-parse
-      goos:
-          - window
-          - darwin
-          - linux
-      goarch:
-          - amd64
-      env:
-          - CGO_ENABLED=0
+  - binary: jtl-parse
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
 archive:
-    format: tar.gz
-    replacements:
-        amd64: 64-bit
-        darwin: macOS
-        linux: Tux
-snapshot:
-    name_template: "{{ .Tag }}-next"
-changelog:
-    sort: asc
-    filters:
-        exclude:
-            - "^docs:"
-            - "^test:"
+  format: tar.gz
+  replacements:
+    amd64: 64-bit
+    darwin: macOS
+    linux: Tux
