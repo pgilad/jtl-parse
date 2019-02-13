@@ -1,20 +1,24 @@
 builds:
-- env:
-  - CGO_ENABLED=0
+    - binary: jtl-parse
+      goos:
+          - window
+          - darwin
+          - linux
+      goarch:
+          - amd64
+      env:
+          - CGO_ENABLED=0
 archive:
-  replacements:
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-    386: i386
-    amd64: x86_64
-checksum:
-  name_template: 'checksums.txt'
+    format: tar.gz
+    replacements:
+        amd64: 64-bit
+        darwin: macOS
+        linux: Tux
 snapshot:
-  name_template: "{{ .Tag }}-next"
+    name_template: "{{ .Tag }}-next"
 changelog:
-  sort: asc
-  filters:
-    exclude:
-    - '^docs:'
-    - '^test:'
+    sort: asc
+    filters:
+        exclude:
+            - "^docs:"
+            - "^test:"
