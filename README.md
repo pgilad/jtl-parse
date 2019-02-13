@@ -53,4 +53,4 @@ Label2,1519028941268,93,93,1
 
 ## License
 
-MIT
+MIT © [Gilad Peleg](https://www.giladpeleg.com)
